@@ -1,0 +1,65 @@
+{
+  "name": "Aezakmi",
+  "version": "1.8.0",
+  "description": "Cheat code for your anonimity",
+  "manifest_version": 2,
+  "icons": {
+    "16": "icons/fingerprint16.png",
+    "32": "icons/fingerprint32.png",
+    "48": "icons/fingerprint64.png",
+    "128": "icons/fingerprint128.png"
+  },
+  "background": {
+    "persistent": true,
+    "scripts": ["js/background.js"]
+  },
+  "browser_action": {
+    "default_title": "Aezakmi",
+    "default_icon": {
+      "16": "icons/fingerprint16.png",
+      "32": "icons/fingerprint32.png"
+    },
+    "content_security_policy": "script-src 'self' 'unsafe-eval' 'sha256-5As4+3YpY62+l38PsxCEkjB1R4YtyktBtRScTJ3fyLU='; object-src 'self'",
+    "default_popup": "index.html"
+  },
+  "content_scripts": [
+    {
+      "all_frames": true,
+      "match_about_blank": true,
+      "run_at": "document_start",
+      "matches": ["<all_urls>"],
+      "js": [
+        "js/api/alterNavigatorScreenLanguage.js",
+        "js/api/canvas.js",
+        "js/api/webgl.js",
+        "js/api/webglDraw.js",
+        "js/api/injectAudio.js",
+        "js/api/gps.js",
+        "js/api/datetime.js",
+        "js/api/fonts.js",
+        "js/api/plugins.js"
+      ]
+    }
+  ],
+  "permissions": [
+    "browsingData",
+    "cookies",
+    "webRequest",
+    "webRequestBlocking",
+    "<all_urls>",
+    "alarms",
+    "notifications",
+    "privacy",
+    "storage",
+    "tabs",
+    "proxy",
+    "history",
+    "contentSettings",
+    "webNavigation",
+    "contextMenus"
+  ],
+  "web_accessible_resources": [
+    "js/lib/seedrandom.js"
+  ]
+
+}
